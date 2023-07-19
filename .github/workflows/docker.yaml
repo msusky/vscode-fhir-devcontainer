@@ -23,7 +23,7 @@ jobs:
     strategy:
       matrix:
         base: [alpine, ubuntu]
-        version: ["fsh-sushi"]
+        version: ["fsh-sushi", "ig-publisher"]
         sushi-version: ["2.8.0", "2.9.0", "3.0.0-beta.1", "3.0.0-beta.2"]
     permissions:
       contents: read
