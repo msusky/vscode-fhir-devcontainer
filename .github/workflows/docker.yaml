@@ -67,5 +67,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          target: ${{ matrix-version }}-${{ matrix.base }}
+          target: ${{ matrix.version }}-${{ matrix.base }}
           build-args: SUSHI_VERSION=${{ matrix.sushi-version }}
