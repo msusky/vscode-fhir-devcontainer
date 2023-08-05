@@ -1,4 +1,4 @@
-# vscode FHIR devcontainers
+# VS Code FHIR development containers
 
 [![Docker Images](https://github.com/cybernop/vscode-fhir-devcontainer/actions/workflows/docker.yaml/badge.svg)](https://github.com/cybernop/vscode-fhir-devcontainer/actions/workflows/docker.yaml)
 
