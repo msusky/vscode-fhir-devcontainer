@@ -1,4 +1,4 @@
-name: Build
+name: Docker Images
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -7,8 +7,9 @@ name: Build
 
 on:
   push:
-    branches:
-      - main
+    paths:
+      - ".github/workflows/*.yaml"
+      - "Dockerfile"
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -125,7 +126,7 @@ jobs:
     strategy:
       matrix:
         base: [alpine, ubuntu]
-        sushi-version: ["2.8.0", "2.9.0", "2.10.2", "3.0.0", "3.1.0"]
+        sushi-version: ["2.10.2", "3.0.0", "3.1.0", "3.2.0", "3.3.0"]
     permissions:
       contents: read
       packages: write
@@ -178,7 +179,7 @@ jobs:
     strategy:
       matrix:
         base: [alpine, ubuntu]
-        sushi-version: ["2.8.0", "2.9.0", "2.10.2", "3.0.0", "3.1.0"]
+        sushi-version: ["2.10.2", "3.0.0", "3.1.0", "3.2.0", "3.3.0"]
     permissions:
       contents: read
       packages: write
