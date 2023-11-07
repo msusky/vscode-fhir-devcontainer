@@ -30,6 +30,7 @@ RUN npm install -g fsh-sushi@${SUSHI_VERSION}
 FROM ghcr.io/cybernop/vscode-fhir-devcontainer/node:alpine AS pub-base-alpine
 RUN apk update \
     && apk add --no-cache \
+    linux-headers \
     openjdk17-jdk \
     ruby-dev \
     msttcorefonts-installer \
