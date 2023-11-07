@@ -126,7 +126,17 @@ jobs:
     strategy:
       matrix:
         base: [alpine, ubuntu]
-        sushi-version: ["2.10.2", "3.0.0", "3.1.0", "3.2.0", "3.3.0"]
+        sushi-version:
+          [
+            "3.5.0",
+            "3.4.0",
+            "3.3.3",
+            "3.3.0",
+            "3.2.0",
+            "3.1.0",
+            "3.0.0",
+            "2.10.2",
+          ]
     permissions:
       contents: read
       packages: write
@@ -179,7 +189,17 @@ jobs:
     strategy:
       matrix:
         base: [alpine, ubuntu]
-        sushi-version: ["2.10.2", "3.0.0", "3.1.0", "3.2.0", "3.3.0"]
+        sushi-version:
+          [
+            "3.5.0",
+            "3.4.0",
+            "3.3.3",
+            "3.3.0",
+            "3.2.0",
+            "3.1.0",
+            "3.0.0",
+            "2.10.2",
+          ]
     permissions:
       contents: read
       packages: write

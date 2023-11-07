@@ -4,20 +4,62 @@
 
 Prebuilt VS Code development containers providing tools to build FHIR profiles using FSH sushi and IGs.
 
-A development container can be used is VS Code by creating a file `.devcontainer/devcontainer.json`. For more information see [https://containers.dev/implementors/json_reference/](https://containers.dev/implementors/json_reference/).
+## Images and tags
 
-There are images only containing FSH sushi for building FHIR profiles and images containing FSH sushi and the IG publisher to build a FHIR implementation guide to host on a website.
+Available images:
 
-The images containing only sushi are named
+* only FSH sushi: `ghcr.io/cybernop/vscode-fhir-devcontainer/fsh-sushi`
+* FSH sushi and IG publisher: `ghcr.io/cybernop/vscode-fhir-devcontainer/ig-publisher`
 
+Available tags (`<sushi version>-<os base>`):
+
+* `3.5.0-alpine`
+* `3.5.0-ubuntu`
+* `3.4.0-alpine`
+* `3.4.0-ubuntu`
+* `3.3.3-alpine`
+* `3.3.3-ubuntu`
+* `3.3.0-alpine`
+* `3.3.0-ubuntu`
+* `3.2.0-alpine`
+* `3.2.0-ubuntu`
+* `3.1.0-alpine`
+* `3.1.0-ubuntu`
+* `3.0.0-alpine`
+* `3.0.0-ubuntu`
+* `2.10.2-alpine`
+* `2.10.2-ubuntu`
+
+## Usage
+
+### Simple usage
+
+The easiest way using one of the development containers is by creating `.devcontainer/devcontainer.json` in your project root and set
+
+```json
+{
+    "image": "<image>:<tag>"
+}
 ```
-ghcr.io/cybernop/vscode-fhir-devcontainer/fsh-sushi:<sushi version>-<os base>
+
+### Advanced usage
+
+To modify the base image, e.g. for installing other dependencies, one can create your own `Dockerfile` in `.devcontainer` like:
+
+```Dockerfile
+FROM <image>:<tag>
+
+# Do stuff
 ```
 
-images containing sushi and the IG publisher
+and instead of setting the `image` property in `devcontainer.json` set
 
-```
-ghcr.io/cybernop/vscode-fhir-devcontainer/ig-publisher:<sushi version>-<os base>
+```json
+{
+    "build": {
+        "dockerfile": "Dockerfile"
+    }
+}
 ```
 
-`<os base>` can be `alpine` or `ubuntu`. `<sushi version>` follow the releases FSH sushi versions. Currently the following versions are supported: `2.10.2`, `3.0.0`, `3.1.0`, `3.2.0`, `3.3.0`.
+For more information about dev containers, see [https://containers.dev/implementors/json_reference/](https://containers.dev/implementors/json_reference/).
