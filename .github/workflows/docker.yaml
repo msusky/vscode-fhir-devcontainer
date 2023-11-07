@@ -16,6 +16,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
+  SUSHI_VERSION: "3.5.0"
 
 jobs:
   node-base:
@@ -126,17 +127,6 @@ jobs:
     strategy:
       matrix:
         base: [alpine, ubuntu]
-        sushi-version:
-          [
-            "3.5.0",
-            "3.4.0",
-            "3.3.3",
-            "3.3.0",
-            "3.2.0",
-            "3.1.0",
-            "3.0.0",
-            "2.10.2",
-          ]
     permissions:
       contents: read
       packages: write
@@ -168,7 +158,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/fsh-sushi
           tags: |
-            ${{ matrix.sushi-version }}-${{ matrix.base }}
+            ${{ env.SUSHI_VERSION }}-${{ matrix.base }}
 
       # Build and push Docker image with Buildx (push on tag)
       # https://github.com/docker/build-push-action
@@ -180,7 +170,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           target: fsh-sushi-${{ matrix.base }}
-          build-args: SUSHI_VERSION=${{ matrix.sushi-version }}
+          build-args: SUSHI_VERSION=${{ env.SUSHI_VERSION }}
 
   ig-publisher:
     name: IG Publisher
@@ -189,17 +179,6 @@ jobs:
     strategy:
       matrix:
         base: [alpine, ubuntu]
-        sushi-version:
-          [
-            "3.5.0",
-            "3.4.0",
-            "3.3.3",
-            "3.3.0",
-            "3.2.0",
-            "3.1.0",
-            "3.0.0",
-            "2.10.2",
-          ]
     permissions:
       contents: read
       packages: write
@@ -231,7 +210,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}/ig-publisher
           tags: |
-            ${{ matrix.sushi-version }}-${{ matrix.base }}
+            ${{ env.SUSHI_VERSION }}-${{ matrix.base }}
 
       # Build and push Docker image with Buildx (push on tag)
       # https://github.com/docker/build-push-action
@@ -243,4 +222,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           target: ig-publisher-${{ matrix.base }}
-          build-args: SUSHI_VERSION=${{ matrix.sushi-version }}
+          build-args: SUSHI_VERSION=${{ env.SUSHI_VERSION }}
