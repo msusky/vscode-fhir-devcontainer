@@ -16,7 +16,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
-  SUSHI_VERSION: "3.5.0"
+  SUSHI_VERSION: "3.10.0"
 
 jobs:
   node-base:
