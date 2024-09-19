@@ -75,6 +75,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           target: node-${{ matrix.base }}
+          platforms: ${{ env.TARGET_PLATFORMS }}
 
   pub-base:
     name: IG Publisher Base
@@ -132,6 +133,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           target: pub-base-${{ matrix.base }}
+          platforms: ${{ env.TARGET_PLATFORMS }}
 
   sushi:
     name: FSH Sushi
@@ -190,6 +192,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           target: fsh-sushi-${{ matrix.base }}
           build-args: SUSHI_VERSION=${{ env.SUSHI_VERSION }}
+          platforms: ${{ env.TARGET_PLATFORMS }}
 
   ig-publisher:
     name: IG Publisher
@@ -248,3 +251,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           target: ig-publisher-${{ matrix.base }}
           build-args: SUSHI_VERSION=${{ env.SUSHI_VERSION }}
+          platforms: ${{ env.TARGET_PLATFORMS }}
